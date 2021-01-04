@@ -1,6 +1,5 @@
 USERID GCCCMS
-/*
- * math.c - mathematical functions for RPilot
+/* math.c - mathematical functions for RPilot
  * 
  * major update - aug.11.2000
  *  - remove all garbage, express() remains only as a wrapper to calc()
@@ -17,7 +16,8 @@ int express( char *form )
 
   result = calc( form, &status );
 
-  if( status != 0 ) {  // error
+  if( status != 0 )		/* error */
+  { 
     err( EXP_MATH, "" );
   }
 

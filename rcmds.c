@@ -1,8 +1,5 @@
 USERID GCCCMS
-/*
-  cmds.c - RPilot commands functions
-*/
-
+/* cmds.c - RPilot commands functions */
 
 #include "rpilot.h"
 
@@ -10,11 +7,11 @@ USERID GCCCMS
 #include <string.h>
 #include <stdlib.h>
 
-
 /*
  * internal_type takes a string and formats it like it would be for a T:
  * statement, but returning a string rather than printing it to the screen 
  */
+
 char *internal_type( char *str )
 {
   int i;
@@ -23,7 +20,8 @@ char *internal_type( char *str )
   char output[500], *ret;
 
 
- if( str == NULL ) {
+ if( str == NULL ) 
+ {
    return new_str("");
  }
 
@@ -67,22 +65,23 @@ char *internal_type( char *str )
     } else {
       sprintf( output, "%s%c", output, str[i] );
     }
-    //    printf( "output=\"%s\"\n", output );
+    /* printf( "rcmds.c output=\"%s\"\n", output ); */
 
   }
 
   ret = new_str( output );
-  //  free( output );
-  //  printf("!!output=\"%s\", len=%d\n", output, strlen(output) );
-  //  printf("!!ret=\"%s\", len=%d\n", ret, strlen(ret) );
+
+/*
+  free( output );
+  printf("rcmds.c !!output=\"%s\", len=%d\n", output, strlen(output) );
+  printf("rcmds.c !!ret=\"%s\", len=%d\n", ret, strlen(ret) );
+*/
   
   return ret;
 }
 
 
-/*
- * the cmd_ functions implement the PILOT statements that they're named after
- */
+/* the cmd_ functions implement the PILOT statements they're named after */
 
 void cmd_use( char *str )
 {
@@ -141,7 +140,7 @@ void cmd_accept( char *str )
 
   trim( str );
 
-  if( !strcmp(str, "") ) { // blank args, so we put it in $accept
+  if( !strcmp(str, "") ) { /* blank args, so we put it in $accept */
     fgets( inbuf, MAXLINE-1, stdin );
     chop( inbuf );  // remove trailing LF
     set_strvar( "$ACCEPT", inbuf );
