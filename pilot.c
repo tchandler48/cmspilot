@@ -1,8 +1,5 @@
 USERID GCCCMS
-/*
- * main.c - main() function for RPilot
- * pmain.c - main() function for RPILOT
- */
+/* pilot.c - main() function for RPilot   */
 
 #include <stdio.h>
 #include <stdlib.h>
@@ -28,14 +25,15 @@ USERID GCCCMS
 #include "rmath.h"
 #include "rcalc.h"
 
-typedef struct rpinfo {
-  struct line *currline;  /* line of code that is currently being executed */
-  struct line *linehead;  /* the head of the line list */
-  struct label *lblhead;  /* head of the label list */
+typedef struct rpinfo 
+{
+  struct line *currline;  	/* code that is currently being executed */
+  struct line *linehead;  	/* the head of the line list */
+  struct label *lblhead;  	/* head of the label list */
   struct numvar *numhead;    
   struct strvar *strhead;
   struct stack *stk;
-  int error;          /* the last error that occured */
+  int error;          	/* the last error that occured */
   int status;         /* the status of the program (one of the STAT_ values) */
   char *lastacc;      /* the name of the last variable to be accepted */
   int strict;         /* should we be strict about undeclared variables? */
@@ -44,9 +42,9 @@ typedef struct rpinfo {
 
 struct rpinfo *rpi;
 
-  int showban = TRUE;
-  int inter = FALSE;
-  int bind = FALSE;
+  int showban  = TRUE;
+  int inter 	 = FALSE;
+  int bind 	 = FALSE;
   int mainfunc = FALSE;
   int showhelp = FALSE;
   char *filename=NULL, *outfile=NULL, *dataname=NULL, *funcname=NULL;
@@ -74,9 +72,9 @@ struct rpinfo *rpi;
 int main(int argc, char *argv[])
 {
   int i;
- 
 
-  for( i=1; i < argc; i++ ) {
+  for( i=1; i < argc; i++ ) 
+  {
 
     /* printf("argv[%d] = %s\n", i, argv[i] ); */
 
