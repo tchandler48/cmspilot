@@ -34,15 +34,14 @@ int calc( char *expr, int *status )
 
   result = next_num( expr, &pos, status );
 
-  while( pos < strlen(expr) ) {
-
-
+  while( pos < strlen(expr) ) 
+  {
     op = next_tok( expr, &pos );
     num = next_num( expr, &pos, status );
 
-
-    switch( op ) {
-    case 0 :  // invalid operand
+    switch( op ) 
+    {
+    case 0 :  	/* invalid operand */
       *status = CALC_NO_OP;
       return 0;
       break;
@@ -81,9 +80,6 @@ int calc( char *expr, int *status )
   return result;
 }
 
-
-
-
 int next_num( char *str, int *pos, int *status )
 {
   char *inparen, *tempstr;
@@ -92,11 +88,13 @@ int next_num( char *str, int *pos, int *status )
 
   *pos = wspace( str, *pos );
   
-  if( str[*pos] == '-' ) {
+  if( str[*pos] == '-' ) 
+  {
     mult = -1;
     *pos += 1;
   }
-  if( str[*pos] == '(' ) {
+  if( str[*pos] == '(' ) 
+  {
     rparen = find_match( str, *pos+1, ')', '(' );
     inparen = new_strf( str, *pos+1, rparen-*pos-1 );
     
@@ -146,7 +144,8 @@ int read_num( char *str, int *pos )
   start = wspace( str, *pos );
   numchars = start;
 
-  while( isdigit(str[numchars]) ) {
+  while( isdigit(str[numchars]) ) 
+  {
     numchars++;
   }
 
@@ -166,7 +165,7 @@ char next_tok( char *str, int *pos )
   int nows = wspace( str, *pos );
   *pos = nows;
 
-  *pos += 1;  // increment position counter
+  *pos += 1;  	/* increment position counter */
   return str[nows];
 }
 
@@ -182,13 +181,14 @@ int read_var( char *str, int *pos )
   start = *pos;
   numchars = start + 1;
 
-  while( isalpha(str[numchars]) ) {
+  while( isalpha(str[numchars]) ) 
+  {
     numchars++;
   }
 
   var = new_strf( str, start, numchars - start );
 
-  //  printf( "*** read_var(): var = \"%s\"\n", var );
+  /*  printf( "*** read_var(): var = \"%s\"\n", var ); */
 
   *pos = numchars;
 

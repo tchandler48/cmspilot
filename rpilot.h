@@ -1,45 +1,23 @@
 USERID GCCCMS
-/*
-  rpilot.h - universal macros and the like.
-*/
+/*  rpilot.h - universal macros and the like. */
 
 #ifndef _rpilot_h_
 #define _rpilot_h_
-/*
-#include "pmain.h"
-#include "rline.h"
-#include "rstack.h"
-#include "rlabel.h"
-#include "rcondex.h"
-#include "rvar.h"
-#include "rcmds.h"
-#include "rdebug.h"
-#include "rerr.h"
-#include "rstring.h"
-#include "rpinfo.h"
-#include "rbind.h"
-#include "rinteract.h"
-*/
-
-/*
-#include <stdio.h>
-#include <stdlib.h>
-*/
 
 #define MAXLINE 256         /* Max length of a source line */
 
 /* Status indicators */
-#define STAT_RUN 1
-#define STAT_HALT 2
-#define STAT_END 3
+#define       STAT_RUN      1
+#define       STAT_HALT     2
+#define       STAT_END      3
 
 
 /* Used to check conditional values */ 
-#define FALSE 0
-#define TRUE 1
+#define        FALSE        0
+#define        TRUE         1
 
 /* What string is displayed for an accept command? */
-#define ACCEPT_STR ">"
+#define        ACCEPT_STR   ">"
 
 
 /* Remove a terminating newline */
@@ -51,7 +29,7 @@ Initialize randon number based on time
 */
 
 /* The version number, of course */
-#define VERSION "1.4"
+#define         VERSION      "1.4"
 
 /* exported functions */
 int get_nv( char *str );
@@ -63,7 +41,6 @@ void execute( char *str );
 char *get_stvl( char *str );
 void init(); 
 int readfile( char *filename );
-/* extern rpinfo *rpi; */
 int express( char *form );
 int interp();
 
