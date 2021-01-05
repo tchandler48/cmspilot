@@ -7,7 +7,8 @@ USERID GCCCMS
 #include "rpilot.h"
 #include <stdio.h>
 
-typedef struct {
+typedef struct 
+{
   char cmd;           /* name of the command (C,A,M, etc) */
   condex *cond;       /* Conditional expression, w/o the outer parens */
   char *args;         /* argument to the command */
