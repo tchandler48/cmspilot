@@ -1,15 +1,14 @@
 USERID GCCCMS
-/*
-  label.h - header for label.c
-*/
+/* label.h - header for label.c */
 
 #ifndef _label_h_
 #define _label_h_
 
-#include "rline.h" */
-#include "rpilot.h" */
+#include "rline.h" 
+#include "rpilot.h"
 
-typedef struct {
+typedef struct
+{
   char *name;
   line *stmnt;
   int linenum;
