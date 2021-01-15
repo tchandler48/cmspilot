@@ -35,7 +35,7 @@ condex *new_condex( char *str )
     }
   }
 
-  // we can't find a relational operator
+  /* we can't find a relational operator */
   if( i == strlen(str) ) {
     printf("str=\"%s\"\n", str );
     err( NO_RELAT, str );
@@ -54,7 +54,7 @@ condex *new_condex( char *str )
     c->op = OP_LE;
   } else if( (str[i] == '<') && (str[i+1] == '>') ) {
     c->op = OP_NEQL;
-  } else { // Unknown operation
+  } else { /* Unknown operation */
     err( BAD_RELAT, str );
   }
 

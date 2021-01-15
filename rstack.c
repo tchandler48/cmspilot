@@ -31,13 +31,13 @@ stack *new_stack( line *lne )
 }
 
 
-// returns the new tail of the list
+/*  returns the new tail of the list */
 stack *stk_push( stack *stk, line *lne )
 {
   stkitem *si;
 
   si = new_stkitem( lne );
-  (stkitem *)si->prev = stk->tail;  // worthless cast
+  (stkitem *)si->prev = stk->tail;  /*  worthless cast */
   stk->tail = si;
   
   return stk;
@@ -51,7 +51,7 @@ line *stk_pop( stack *stk )
 
   si = stk->tail;
 
-  stk->tail = (stkitem *)stk->tail->prev;  // worthless cast
+  stk->tail = (stkitem *)stk->tail->prev;  /* worthless cast */
   lne = si->item;
   free( si );
 
