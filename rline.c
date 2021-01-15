@@ -10,7 +10,7 @@ USERID GCCCMS
 #include <ctype.h>
 
 
-// the input str should already be trim()ed
+/* the input str should already be trim()ed */
 
 line *new_line( char *str, char lastcmd, int linenum )
 {
@@ -18,14 +18,14 @@ line *new_line( char *str, char lastcmd, int linenum )
   int colon; 
   int rparen, lparen;
   int i;
-  char *contemp = NULL;  // temp variable for condex string
+  char *contemp = NULL;  /* temp variable for condex string */
 
 
-  colon = findchar( str, ':' );  // get the position of the colon
+  colon = findchar( str, ':' );  /* get the position of the colon */
   l->next = NULL;
   l->linenum = linenum;
 
-  // is it a blank string?
+  /* is it a blank string? */
   if( !strcmp(str, "") ) {
     l->cmd = lastcmd;
     l->args = NULL;
@@ -33,7 +33,7 @@ line *new_line( char *str, char lastcmd, int linenum )
     return l;
   }
   
-  if( colon == -1 ) {  // if there is no colon, it's an error
+  if( colon == -1 ) {  /* if there is no colon, it's an error */
     err( NO_COLON, str );
   }
 
@@ -81,11 +81,11 @@ line *new_line( char *str, char lastcmd, int linenum )
 
     rparen = findchar( str, ')' );
     if( rparen == -1 ) {
-      // If there is no right parentheses, we signal an error
+      /* If there is no right parentheses, we signal an error */
       err( NO_RPAREN, str );
     }
-    // otherwise, create a temporary string, and make a new condex
-    //    contemp = new_strf( str, 1, rparen-1 );
+    /* otherwise, create a temporary string, and make a new condex
+        contemp = new_strf( str, 1, rparen-1 ); */
     contemp = new_strf( str, 1, rparen-1 );
     l->cond = new_condex( contemp );
     free( contemp );
@@ -104,11 +104,11 @@ line *new_line( char *str, char lastcmd, int linenum )
    */
   
   l->cmd = str[0];
-  //  l->args = new_strf( str, colon+1, strlen(str)-colon+1 );
+  /*  l->args = new_strf( str, colon+1, strlen(str)-colon+1 ); */
 
   lparen = findchar( str, '(' );
   if( (lparen == -1)|| (lparen > colon) ) {
-    // Now, we can see if there is a Y or N somehwere.. 
+    /* Now, we can see if there is a Y or N somehwere.. */
     for( i=1; i<colon; i++ ) {
       if( toupper(str[i]) == 'Y' ) {
 	l->cond = new_condex( "Y" );
@@ -118,18 +118,18 @@ line *new_line( char *str, char lastcmd, int linenum )
 	return l;
       }
     }
-    // If we didn't find Y or N, there is no condex, so just return
+    /* If we didn't find Y or N, there is no condex, so just return */
     l->cond = NULL;
     return l;
     
   }
 
-  // Now we have a conditional expression, so create a new condex and return
+  /* Now we have a conditional expression, so create a new condex and return */
   rparen = findchar( str, ')' );
   if( rparen == -1 ) {
     err( NO_RPAREN, str );
   }
-  //  contemp = new_strf( str, lparen+1, rparen-1 );
+  /*  contemp = new_strf( str, lparen+1, rparen-1 ); */
   contemp = new_strf( str, lparen+1, rparen-2 );
   l->cond = new_condex( contemp );
   free( contemp );

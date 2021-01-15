@@ -1,6 +1,5 @@
 USERID GCCCMS
-/*
- * main.h - prototypes for main.c
+/* 
  * pmain.h - protyptes or pmain.c
  */
 
