@@ -50,7 +50,7 @@ void set_strvar( char *name, char *val )
     s = (strvar *)s->next;
   }
 
-  // if we can't find the variable, make a new one
+  /* if we can't find the variable, make a new one */
   (strvar *)prev->next = new_strvar( name, val );
 }
 

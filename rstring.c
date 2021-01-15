@@ -50,7 +50,7 @@ char *strset( char *s, int ch )
   return s;
 }
 
-// make a copy of a string
+/* make a copy of a string */
 char *new_str( char *src ) 
 {
   char *str;
@@ -58,7 +58,7 @@ char *new_str( char *src )
   str = (char *)malloc( strlen(src)+1 );
   strncpy( str, src, strlen(src) );
 
-  // prevent junk from being tacked on the end
+  /* prevent junk from being tacked on the end */
   if( strlen(str) > strlen(src) ) {
     str[strlen(src)] = 0;
   }
@@ -66,7 +66,7 @@ char *new_str( char *src )
   return str;
 }
 
-// make a new string from src, starting at char index and going for count chars
+/* make a new string from src starting char index and going for count chars */
 char *new_strf( char *src, int index, int count )
 {
   char *str;
@@ -75,8 +75,8 @@ char *new_strf( char *src, int index, int count )
   memset( str, 0, count+1 );
   strncpy( str, src+index, count );
 
-  //  str[strlen(str)+1] = 0;
-  //  str[count+1] = 0;
+  /*   str[strlen(str)+1] = 0;
+       str[count+1] = 0; */
 
   return str;
 }
@@ -228,7 +228,7 @@ char *parse( const char *src, int num )
   
   currws = find( srccopy, " \t", 1 );
 
-  if( currws == -1 ) { // no spaces found, so only one string available
+  if( currws == -1 ) { /* no spaces found, so only one string available */
     return srccopy;
   } 
 
@@ -250,7 +250,7 @@ char *parse( const char *src, int num )
     }
   }
 
-  if( nextws == -1 ) {  // last bit in src, no whitespace after
+  if( nextws == -1 ) {  /* last bit in src, no whitespace after */
     ret = new_strf( srccopy, currws+1, strlen(srccopy)-currws-1 );
   } else {
     ret = new_strf( srccopy, currws+1, nextws-currws-1 );
@@ -294,7 +294,7 @@ char *ltrim( char *str )
   int i;
   int spc = ws( str );
 
-  if( spc == -1 ) {  // blank line
+  if( spc == -1 ) {  /* blank line */
     return "";
   }
   

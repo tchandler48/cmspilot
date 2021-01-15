@@ -5,10 +5,10 @@ USERID GCCCMS
  *  - remove all garbage, express() remains only as a wrapper to calc()
  */
 
+#include <string.h>
+
 #include "rpilot.h"
 #include "rcalc.h"
-
-#include <string.h>
 
 int express( char *form )
 {
@@ -16,7 +16,7 @@ int express( char *form )
 
   result = calc( form, &status );
 
-  if( status != 0 )		/* error */
+  if( status != 0 )	
   { 
     err( EXP_MATH, "" );
   }

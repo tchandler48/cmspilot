@@ -52,8 +52,8 @@ char *internal_type( char *str )
       if( str[i+1] == '#' ) {
 	i+=2;
       } else {
-	nextsp = find( str, " \t", i );  // find next space;
-	if( nextsp == -1 ) {  // no more spaces, use the rest of the line
+	nextsp = find( str, " \t", i );  /* find next space; */
+	if( nextsp == -1 ) {  /* no more spaces, use the rest of the line */
 	  varname = new_strf( str, i, strlen(str)-i );
 	} else {
 	  varname = new_strf( str, i, nextsp-i );
@@ -115,9 +115,9 @@ void cmd_compute( char *str )
   trim( lside );
   trim( rside );
   
-  if( lside[0] == '#' ) { // numeric variable, so a simple assignment
+  if( lside[0] == '#' ) { /* numeric variable, so a simple assignment */
     set_numvar( lside, express(rside) );
-  } else if( lside[0] == '$' ) { // string var, copy all strings on the right
+  } else if( lside[0] == '$' ) { /* string var, copy all strings on the right */
     set_strvar( lside, internal_type(rside) );
   } else {
     err( CONS_ASGN, lside );
@@ -136,30 +136,30 @@ void cmd_accept( char *str )
   int i;
 
   fflush( stdin );
-  printf( "%s ", get_stvr("$PROMPT") );  // print the prompt
+  printf( "%s ", get_stvr("$PROMPT") );  /* print the prompt */
 
   trim( str );
 
   if( !strcmp(str, "") ) { /* blank args, so we put it in $accept */
     fgets( inbuf, MAXLINE-1, stdin );
-    chop( inbuf );  // remove trailing LF
+    chop( inbuf );  
     set_strvar( "$ACCEPT", inbuf );
     free( rpi->lastacc );
     rpi->lastacc = new_str( "$ACCEPT" );
-  } else if( str[0] == '$' ) { // we need to read a string variable
+  } else if( str[0] == '$' ) { 
     fgets( inbuf, MAXLINE-1, stdin );
     chop( inbuf );
-    if( !strcmp(inbuf, "") ) {  // did the user enter a blank line?
-      strcpy( inbuf, "[BLANK]" ); // FIXME ....maybe
+    if( !strcmp(inbuf, "") ) {  
+      strcpy( inbuf, "[BLANK]" ); /* FIXME ....maybe */
     }
     set_strvar( str, inbuf );
     free( rpi->lastacc );
     rpi->lastacc = new_str( str );
-  } else if( str[0] == '#' ) { // read a numeric var
+  } else if( str[0] == '#' ) { 
     fgets( inbuf, MAXLINE-1, stdin );
     chop( inbuf );
     i = atoi( inbuf );
-    //    scanf( "%d", &i );
+    /*    scanf( "%d", &i ); */
     set_numvar( str, i );
     free( rpi->lastacc );
     rpi->lastacc = new_str( str );
@@ -176,7 +176,7 @@ void cmd_type( char *str )
 /*   char *varname; */
 
 /*  if( str == NULL ) { */
-/* //puts( "T: empty arguments (str == NULL)" ); */
+/*  puts( "T: empty arguments (str == NULL)" ); */
 /*    return; */
 /*  } */
 
@@ -235,12 +235,12 @@ void cmd_match( char *str )
 {
   int count = numstr( str );
   int i;
-  //  char *temp = (char *)malloc( strlen(str)+1 );
+  /*  char *temp = (char *)malloc( strlen(str)+1 ); */
   char *temp = NULL;
 
   strupr( str );
-  for( i=1; i<count+1; i++ ) { // count;
-    //    strset( temp, 0 );
+  for( i=1; i<count+1; i++ ) { 
+    /*    strset( temp, 0 ); */
     temp = parse( str, i );
     if( !strcmp(strupr(get_stvr(rpi->lastacc)), temp) ) {
       set_numvar( "#MATCHED", 1 );
@@ -268,7 +268,7 @@ void cmd_execute( char *str )
   execute( str );
 }
 
-// Types a line if #matched == TRUE
+/* Types a line if #matched == TRUE */
 void cmd_yes( char *str )
 {
 
@@ -278,7 +278,7 @@ void cmd_yes( char *str )
 }
 
 
-// Types a line if #matched == FALSE
+/* Types a line if #matched == FALSE */
 void cmd_no( char *str )
 {
 
@@ -289,7 +289,7 @@ void cmd_no( char *str )
 
 
 
-// call a shell
+/* call a shell */
 void cmd_shell( char *str )
 {
   int retcode;
@@ -312,7 +312,7 @@ void cmd_generate( char *str )
   char *exp, *var;
 
   if( !strcmp(str, "") ) {
-    // do what?
+    /* do what? */
   } else {
     trim( str );
   }
@@ -326,7 +326,7 @@ void cmd_generate( char *str )
 
   srand( (unsigned)time(NULL) );
 
-  //  rnd = lower + (int)( (upper * rand()) / RAND_MAX );
+  /*  rnd = lower + (int)( (upper * rand()) / RAND_MAX ); */
   rnd = lower+(int) ((float)upper*rand()/(RAND_MAX+1.0));
 
   set_numvar(  var, rnd );

@@ -50,24 +50,23 @@ int err( int errnum, char *msg )
 
 char *errstr( int errnum )
 {
-
-  char *errlist[] = {
-    "Duplicate label `%s'",                                // DUP_LABEL
-    "No file name specified",                              // NO_FILE
-    "Can't open file `%s'",                                // ERR_FILE 
-    "Unknown command `%s'",                                // UNKNWN_CMD
-    "Out of memory!",                                      // NO_MEM
-    "Duplicate variable `%s'",                             // DUP_VAR
-    "Unknown variable `%s'",                               // BAD_VAR
-    "Expected math symbol, not `%s'",                      // EXP_MATH
-    "Missing relational operator",                         // NO_RELAT
-    "Missing colon in statement",                          // NO_COLON
-    "Unknown label: `%s'",                                 // BAD_LABEL
-    "Unknown relational operator: `%s'",                   // BAD_RELAT
-    "No equal sign in assignment",                         // NO_EQL
-    "Missing right parentheses in conditional expression", // NO_RPAREN
-    "Cannot assign value to constant `%s'",                // CONS_ASGN
-    "Missing command line argument after `%s'"             // NO_CLARG
+  char *errlist[16] = {
+    "Duplicate label `%s'",                                /* DUP_LABEL */
+    "No file name specified",                              /* NO_FILE */
+    "Can't open file `%s'",                                /* ERR_FILE  */
+    "Unknown command `%s'",                                /* UNKNWN_CMD */
+    "Out of memory!",                                      /* NO_MEM */
+    "Duplicate variable `%s'",                             /* DUP_VAR */
+    "Unknown variable `%s'",                               /* BAD_VAR */
+    "Expected math symbol, not `%s'",                      /* EXP_MATH */
+    "Missing relational operator",                         /* NO_RELAT */
+    "Missing colon in statement",                          /* NO_COLON */
+    "Unknown label: `%s'",                                 /* BAD_LABEL */
+    "Unknown relational operator: `%s'",                   /* BAD_RELAT */
+    "No equal sign in assignment",                         /* NO_EQL */
+    "Missing right parentheses in conditional expression", /* NO_RPAREN */
+    "Cannot assign value to constant `%s'",                /* CONS_ASGN */
+    "Missing command line argument after `%s'"             /* NO_CLARG */
   };
 
   if( errnum >= 0 ) {

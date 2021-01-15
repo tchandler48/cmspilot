@@ -21,7 +21,7 @@ USERID GCCCMS
      
 int readfile( char *filename )
 {
-  char inbuf[MAXLINE];  // 256-char limit on line width
+  char inbuf[MAXLINE];  /* 256-char limit on line width */
   line *currline;
   line *templine = NULL;
   label *currlbl;
@@ -46,7 +46,7 @@ int readfile( char *filename )
     chop( inbuf );
     linenum++;
     trim( inbuf );
-    if( strcmp(inbuf, "") ) {  // if the line isn't blank
+    if( strcmp(inbuf, "") ) {  /* if the line isn't blank */
 
 #ifdef IGNORE_HASH
       if( (linenum == 1) && (inbuf[0] == '#') ) {
@@ -54,7 +54,7 @@ int readfile( char *filename )
       }
 #endif
 
-      if( inbuf[0] == '*' ) { // label
+      if( inbuf[0] == '*' ) { /* label */
 	currlbl->next = (struct label *)new_label( inbuf+1, NULL, linenum );
 	templbl = (label *)currlbl->next;
 	currlbl = (label *)currlbl->next;
@@ -66,7 +66,7 @@ int readfile( char *filename )
 	  templbl->stmnt = (line *)currline;
 	  templbl = NULL;
 	}
-	lastcmd = currline->cmd;  // next->cmd;
+	lastcmd = currline->cmd;  /* next->cmd; */
       } else {
 	lastcmd = 'R';
       }
@@ -196,17 +196,17 @@ int interp()
 
   while( rpi->currline != NULL ) {
     curr = (line *)rpi->currline;
-    if( curr->cond != NULL ) {  // is there a conditional expression?
-      if( test(curr->cond) == TRUE ) {  // if so, test it
+    if( curr->cond != NULL ) {  /* is there a conditional expression? */
+      if( test(curr->cond) == TRUE ) {  /* if so, test it */
 	handle( curr );
       }
     } else {
       handle( curr );
     }
-    // have any other functions changed the value of rpi->currline?
+    /* have any other functions changed the value of rpi->currline? */
     if( (line *)rpi->currline == curr ) {
       rpi->currline = (struct line *)curr->next;
-    } // Otherwise, keep the value of rpi->currline, cuz it's been modified
+    } /* Otherwise, keep the value of rpi->currline, cuz it's been modified */
   }
 }
 
@@ -228,9 +228,9 @@ int run( char *filename )
 void set_var( char *name, char *val )
 {
 
-  if( name[0] == '$' ) {  // string variable
+  if( name[0] == '$' ) {  /* string variable */
     set_strvar( name, val );
-  } else if( name[0] == '#' ) {  // numeric variable
+  } else if( name[0] == '#' ) {  /* numeric variable */
     set_numvar( name, atoi(val) );
   } else {
     err( BAD_VAR, name  );
@@ -275,7 +275,7 @@ void use( char *str )
 
   l = get_label( trim(get_stvl(str)) );
 
-  // push next command onto stack
+  /* push next command onto stack */
   curr = (line *)rpi->currline;
   curr = (line *)curr->next;
   stk_push( (stack *)rpi->stk, curr ); 

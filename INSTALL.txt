@@ -4,6 +4,23 @@ PILOT INSTALLATION:
 	Below are simple instructions on how to install PILOT.  Notes
 	about the usage are also included.
 
+	Load all the *.h and *.c files via the READCARD function of
+	VM370 CMS.
+
+	Load all the files in the example directory for test programs
+	to test your PILOT installation.
+
+       Then execute the tpilot.exec job to compile and create an
+	executable version of pilot.
+
 
 PILOT USAGE:
 
+	To execute PILOT, type the following command:
+
+		PILOT hello.p
+
+	All PILOT programs end with the file type of .p
+
+Any questions/comments
+tchandler48@gmail.com

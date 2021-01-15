@@ -102,7 +102,7 @@ int next_num( char *str, int *pos, int *status )
 
     result = calc( inparen, status );
     free( inparen );
-  } else if( str[*pos] == '#' ) {  // variable
+  } else if( str[*pos] == '#' ) {  /* variable */
     result = read_var( str, pos );
   } else {
     result = read_num( str, pos );

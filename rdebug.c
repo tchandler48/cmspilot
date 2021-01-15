@@ -32,29 +32,29 @@ void proc( char *inbuf, char *lastcmd )
   tok = parse( inbuf, 1 );
   
   if( !strcasecmp(tok, "step") ) {
-    //    step( rpi );
+    /*    step( rpi ); */
   } else if( !strcasecmp(tok, "skip") ) {
-    //    skip( rpi );
+    /*    skip( rpi ); */
   } else if( !strcasecmp(tok, "print") ) {
-    //    print( rpi, inbuf );
+    /*    print( rpi, inbuf ); */
   } else if( !strcasecmp(tok, "set") ) {
-    //    set( rpi, inbuf );
+    /*    set( rpi, inbuf ); */
   } else if( !strcasecmp(tok, "list") ) {
-    //    list( rpi, inbuf );
+    /*    list( rpi, inbuf ); */
   } else if( !strcasecmp(tok, "run") ) {
-    //    run( rpi, inbuf );
+    /*    run( rpi, inbuf ); */
   } else if( !strcasecmp(tok, "stop") ) {
-    //    stop( rpi );
+    /*    stop( rpi ); */
   } else if( !strcasecmp(tok, "help") ) {
-    //    help();
+    /*    help(); */
   } else if( !strcasecmp(tok, "jump") ) {
-    //    jump( rpi, inbuf );
+    /*    jump( rpi, inbuf ); */
   } else if( !strcasecmp(tok, "exec" ) ) {
-    //    exec( rpi, inbuf );
+    /*    exec( rpi, inbuf ); */
   } else if( !strcasecmp(tok, "use") ) {
-    //    use( rpi, inbuf );
+    /*    use( rpi, inbuf ); */
   } else if( !strcasecmp(tok, "restart") ) {
-    //    restart( rpi );
+    /*    restart( rpi ); */
   }
 
   free( tok );
