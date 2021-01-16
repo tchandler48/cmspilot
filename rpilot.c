@@ -28,10 +28,29 @@ int readfile( char *filename )
   label *templbl = NULL;
   int linenum = 0;
   char lastcmd = '!';
+  char ch;
+  char tmp_file[32];
+   int pi,xx;
   FILE *f;
 
+  pi = 0;
+  xx = 0;
+  ch = filename[pi];
+  while(ch != '.')
+  {
+     tmp_file[xx] = ch;
+     pi++;
+     xx++;
+     ch = filename[pi];
+  }
+  filename[pi] = ' ';;
+  filename[pi+1] = 'p';
+  filename[pi+2] = ' ';
+  filename[pi+3] = 'a';
+  filename[pi+4] = '\0';
 
-  if( (f = fopen(filename, "r")) == NULL ) {
+  if( (f = fopen(filename, "r")) == NULL ) 
+  { 
     rpi = NULL;  /* kludge around the error printing */
     err( ERR_FILE, filename );
   }

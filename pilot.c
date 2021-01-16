@@ -76,7 +76,7 @@ int main(int argc, char *argv[])
   for( i=1; i < argc; i++ ) 
   {
 
-    /* printf("argv[%d] = %s\n", i, argv[i] ); */
+   /* printf("argv[%d] = %s\n", i, argv[i] ); */
 
     if( !strcasecmp(argv[i], "-b") ) 
     {
